@@ -25,10 +25,10 @@ def ctext(text):
     return "c {}".format(text.replace('_', ' ')).capitalize()
 
 
-@app.route("/python/<text>", strict_slashes=False)
-def pythontext(text="is cool"):
+app.route("/python/<text>", defaults={'text': 'is cool'}, strict_slashes=False)
+def pythontext(text):
     """display Python url"""
-    return "Python {}".format(text.replace('_', ' '))
+    return "python {}".format(text.replace('_', ' ')).capitalize()
 
 
 if __name__ == '__main__':
