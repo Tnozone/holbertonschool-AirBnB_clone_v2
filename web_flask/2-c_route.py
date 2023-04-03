@@ -20,8 +20,8 @@ def hbhn():
 
 
 @app.route("/c/<text>", strict_slashes=False)
-def ctext():
-    """display C followed by value"""
+def ctext(text):
+    """display C url"""
     return "c {}".format(text.replace('_', ' ')).capitalize()
 
 
