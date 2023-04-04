@@ -37,7 +37,7 @@ class DBStorage():
         allClass = [City, State, User, Place, Review, Amenity]
         instanceList = []
         dictionary = {}
-        
+ 
         if cls is None:
             for i in range(len(allClass)):
                 instanceList += self.__session.query(allClass[i]).all()
@@ -71,6 +71,6 @@ class DBStorage():
         Session = scoped_session(session_factory)
         self.__session = Session()
 
-     def close(self):
-         """call remove() method on the private session attribute"""
-         self.__session.close()
+    def close(self):
+        """call remove() method on the private session attribute"""
+        self.__session.close()

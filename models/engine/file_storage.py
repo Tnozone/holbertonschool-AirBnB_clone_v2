@@ -7,12 +7,10 @@ class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
     __objects = {}
-    
+
     def all(self, cls=None):
         """
-        Retourne un dictionnaire contenant tous les modèles stockés dans le fichier.
-        Si un argument cls est donné, retourne uniquement les modèles qui correspondent
-        à la classe spécifiée.
+        returns dictionary of stocked models
         """
         if cls is not None:
             objects_by_cls = {}
@@ -22,7 +20,6 @@ class FileStorage:
             return objects_by_cls
         else:
             return FileStorage.__objects
-
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
