@@ -15,9 +15,17 @@ class State(BaseModel, Base):
     @property
     def cities(self):
         """returns instances of City"""
-        cityList = []
-        cities = storage.all(City)
-        for city in cities.values():
-            if self.id == city.state_id:
-                cityList.append(city)
-        return cityList
+        if type(models.storage).__name__ == "DBStorage":
+            cityList = []
+            cities = storage.all(City)
+            for city in cities.values():
+                if self.id == city.state_id:
+                    cityList.append(city)
+            return cityList
+        else:
+            cityList = []
+            all_cities = models.storage.all(City)
+            for city in all_cities.values():
+                if city.state_id == self.id:
+                    cityList.append(city)
+            return cityList
