@@ -2,11 +2,9 @@
 """ Starts a Flask web application """
 
 from flask import Flask, render_template
-import sys
 from models import storage
 from models.state import State
 
-sys.path.append('root//holbertonschool-AirBnB_clone_v2')
 app = Flask(__name__)
 
 
@@ -14,12 +12,11 @@ app = Flask(__name__)
 def states_list():
     """Displays an HTML page containing a list of states"""
     states = storage.all(State).values()
-    sorted_states = sorted(states, key=lambda state: state.name)
-    return render_template('7-states_list.html', states=sorted_states)
+    return render_template('7-states_list.html', states=states)
 
 
 @app.teardown_appcontext
-def teardown_appcontext(db):
+def teardown_db(exception):
     """Removes the current SQLAlchemy Session"""
     storage.close()
 
